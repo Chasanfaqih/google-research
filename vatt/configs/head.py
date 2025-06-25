@@ -51,23 +51,27 @@ class FACBridge(BaseHeadConfig):
   """Parameters for the MLP-based FAC-style bridge head."""
 
   name: str = "mlp_fac"
-  default_factory=BatchNormConfig
+  # FIX: Use default_factory for mutable default BatchNormConfig
+  bn_config: base_config.Config = dataclasses.field(default_factory=BatchNormConfig)
   use_xreplica_bn: bool = True
-  vid_to_aud_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  vid_to_aud_txt_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=512,
       modality="video",
       name="video_mlp_module",
-      )
-  aud_to_vid_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+      ))
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  aud_to_vid_txt_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=512,
       modality="audio",
       name="audio_mlp_module",
-      )
-  txt_to_vid_aud_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+      ))
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  txt_to_vid_aud_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=256,
       modality="text",
       name="text_mlp_module",
-      )
+      ))
 
 
 @dataclasses.dataclass
@@ -75,23 +79,27 @@ class JointBridge(BaseHeadConfig):
   """Parameters for the MLP-based Joint-style bridge head."""
 
   name: str = "mlp_joint"
-  default_factory=BatchNormConfig
+  # FIX: Use default_factory for mutable default BatchNormConfig
+  bn_config: base_config.Config = dataclasses.field(default_factory=BatchNormConfig)
   use_xreplica_bn: bool = True
-  vid_to_aud_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  vid_to_aud_txt_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=512,
       modality="video",
       name="video_mlp_module",
-      )
-  aud_to_vid_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+      ))
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  aud_to_vid_txt_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=512,
       modality="audio",
       name="audio_mlp_module",
-      )
-  txt_to_vid_aud_kwargs: MLPBridgeConfig = MLPBridgeConfig(
+      ))
+  # FIX: Use default_factory for mutable default MLPBridgeConfig
+  txt_to_vid_aud_kwargs: MLPBridgeConfig = dataclasses.field(default_factory=lambda: MLPBridgeConfig(
       d_model=512,
       modality="text",
       name="text_mlp_module",
-      )
+      ))
 
 
 @dataclasses.dataclass
