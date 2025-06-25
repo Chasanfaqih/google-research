@@ -51,7 +51,7 @@ class FACBridge(BaseHeadConfig):
   """Parameters for the MLP-based FAC-style bridge head."""
 
   name: str = "mlp_fac"
-  bn_config: BatchNormConfig = dataclasses.field(default_factory=BatchNormConfig)
+  bn_config: base_config.Config = BatchNormConfig
   use_xreplica_bn: bool = True
   vid_to_aud_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
       d_model=512,
@@ -75,7 +75,7 @@ class JointBridge(BaseHeadConfig):
   """Parameters for the MLP-based Joint-style bridge head."""
 
   name: str = "mlp_joint"
-  bn_config: BatchNormConfig = dataclasses.field(default_factory=BatchNormConfig)
+  bn_config: base_config.Config = BatchNormConfig
   use_xreplica_bn: bool = True
   vid_to_aud_txt_kwargs: MLPBridgeConfig = MLPBridgeConfig(
       d_model=512,
