@@ -1,0 +1,7 @@
+data:
+  train_path: "vatt/data/toy_dataset.tfrecord"
+  batch_size: 8
+model:
+  arch: "tx_fac"  # Modality-specific VATT
+optimizer:
+  learning_rate: 0.001
